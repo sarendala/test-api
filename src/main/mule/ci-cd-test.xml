@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="53ad4815-cab9-407d-81ca-535b042de348" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="ci-cd-testFlow" doc:id="a3aa69cb-f6ef-425e-8e6c-b6e05553bbf9" >
+		<http:listener doc:name="Listener" doc:id="b832d33f-b5b3-4832-8cbe-7737905a9f9f" config-ref="HTTP_Listener_config" path="/ci-cd"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c24fa403-4b2b-4796-8244-7ca4bd2b7950" message='#["flow executed successfully"]'/>
+	</flow>
+</mule>
