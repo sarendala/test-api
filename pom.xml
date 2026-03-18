@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -31,24 +33,27 @@
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-maven-plugin</artifactId>
-                <version>4.2.0</version>
-                <extensions>true</extensions>
-           <configuration>
-               <cloudHubDeployment>
-                   <uri>https://anypoint.mulesoft.com</uri>
-                   <muleVersion>4.6.0</muleVersion>
-                   <username>${anypoint.username}</username>
-                   <password>${anypoint.password}</password>
-                   <applicationName>ci-cd-test</applicationName>
-                   <environment>Sandbox</environment>
-                   <workers>1</workers>
-                   <workerType>MICRO</workerType>
-                   <region>us-east-2</region>
-             </cloudHubDeployment>
-         </configuration>
-        </plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>4.2.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<cloudhub2Deployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<provider>MC</provider>
+						<environment>Sandbox</environment>
+						<target>Cloudhub-US-East-2</target>
+						<server>Repository</server>
+						<applicationName>${project.artifactId}</applicationName>
+						<releaseChannel>EDGE</releaseChannel>
+						<replicas>1</replicas>
+						<vCores>0.1</vCores>
+						<deploymentSettings>
+							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+						</deploymentSettings>
+					</cloudhub2Deployment>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
